@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/ProfileLayout.cshtml";
+    Employees current = ViewBag.currentemployee as Employees;
+
+}
+
+<h1>Dashboard</h1>
+@if (TempData["Namak"] != null)
+{
+    <p class="text-danger">@TempData["Namak"]</p>
+}
+<table class="table table-dark">
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Department</th>
+        <th>Change to</th>
+        <th>Change to</th>
+        <th>Change to</th>
+
+    </tr>
+
+
+    @foreach (Employees elm in ViewBag.allemployees)
+    {
+
+        if (elm.Department != current.Department)
+        {
+            <tr>
+
+                <td>@elm.Name</td>
+                <td>@elm.Surname</td>
+                <td>@elm.Department</td>
+                <td><a href="/Management/ChangeToDeVops/@elm.Id"> DevOps</a> </td>
+                <td><a href="/Management/ChangeToHr/@elm.Id">Hr</a></td>
+                <td><a href="/Management/ChangeToDevelopment/@elm.Id">Development</a></td>
+
+            </tr>
+        }
+
+    }
+
+    @*//<a href="/user/Block/@elm.Id"> Block</a>*@
+
+</table>
+
+
+

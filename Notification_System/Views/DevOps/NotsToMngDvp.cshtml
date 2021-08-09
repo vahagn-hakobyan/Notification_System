@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "NotsToAll";
+    Layout = "~/Views/Shared/ProfileLayout.cshtml";
+    Employees allemployees = ViewBag.allemployees as Employees;
+    Employees current = ViewBag.currentemployee as Employees;
+}
+
+<header>
+    <h1>@current.Name @current.Surname</h1>
+
+</header>
+
+
+
+<form name="contact-form" id="frame" autocomplete="off">
+    <div class="form-group">
+
+
+        <label id="userInput" class="form-control">@current.Department</label>
+    </div>
+
+    <div class="form-group">
+        <label>Content</label>
+        <input class="form-control" v-model="notification" type="text" id="messageInput" />
+    </div>
+
+    <div class="form-group">
+        <label> send</label>
+        <input type="button" id="sendButton" v-on:click="sentMessage($event)" class="btn btn-success" value="Send Message" />
+    </div>
+
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#frame",
+        data() {
+            return {
+                notification: '',
+
+
+            };
+
+        },
+        methods: {
+
+
+            sentMessage: function (e) {
+
+
+                axios({
+                    method: 'post',
+                    url: '/Notification/SendNots',
+                    headers:
+                    {
+                        'Content-Type': 'application/json'
+                    },
+                    data: JSON.stringify({ text: this.notification, department: "Development" }),
+                })
+                    .then(r => {
+                        console.log(r.data)
+
+                    })
+
+
+            }
+
+
+        }
+
+    })
+</script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/Chat.js"></script>
+
+
+
+

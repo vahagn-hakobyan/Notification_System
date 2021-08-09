@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "SignupPage";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<h1>Please Sign up</h1>
+<form class="col-md-6" action="/SignupSignin/Register" method="post">
+  
+    @*@if (TempData["Namak"] != null)
+    {
+        <p class="text-danger">@TempData["Namak"]</p>
+    }*@
+    <div class="form-group">
+        <label>First Name</label>
+        <input class="form-control" name="Name" />
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input class="form-control" name="Surname" />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" name="Email" />
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" name="Password" type="password" />
+    </div>
+    <div class="form-group">
+        <label>Department</label>
+        <input class="form-control" name="Department" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-success">Save</button>
+    </div>
+</form>
+
+<div class="col-md-6">
+    <img src="https://thumbs.dreamstime.com/z/portrait-stylish-man-colorful-background-bearded-dressed-striped-shirt-suspenders-hat-yellow-outdoors-146282631.jpg" />
+</div>
+</div>
+
+

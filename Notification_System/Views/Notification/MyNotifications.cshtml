@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "MyNotifications";
+    Layout = "~/Views/Shared/ProfileLayout.cshtml";
+    //Notification mynots = ViewBag.allnotifications as Notification;
+    Employees current = ViewBag.currentuser as Employees;
+}
+
+<h1>My Notifications</h1>
+<table class="table table-dark">
+    <tr>
+        <th>Id</th>
+        <th>Notifications for department</th>
+        <th>Content</th>
+        <th>From Department</th>
+
+    </tr>
+   
+        @foreach (Notification elm in ViewBag.allnotifications)
+        {
+
+
+            <tr>
+
+                <td>@elm.Id</td>
+                <td>@elm.Department</td>
+                <td>@elm.Content</td>
+                <td>@elm.FromDepartment</td>
+
+            </tr>
+        }
+
+
+    
+</table>
+    
+
+
+  
+

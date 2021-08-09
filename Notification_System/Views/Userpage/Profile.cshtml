@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/ProfileLayout.cshtml";
+    Employees current = ViewBag.currentUser as Employees;
+}
+
+<h1>@current.Name @current.Surname</h1>
+<h2> Department - @current.Department</h2>
+
+<form action="/Notification/Notificationspage">
+    <div class="form-group">
+        <button class="btn btn-success">Notifications</button>
+    </div>
+</form>
+@if (current.Department == "Management")
+{
+    <form action="/Management/Dashboard">
+        <div class="form-group">
+            <button class="btn btn-success">Structure Dashboard</button>
+        </div>
+    </form>
+}
+
+
